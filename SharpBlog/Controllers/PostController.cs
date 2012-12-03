@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SharpBlog.Models;
 
 namespace SharpBlog.Controllers
 {
@@ -13,7 +14,8 @@ namespace SharpBlog.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var posts = RavenSession.Query<Post>().ToList();
+            return View(posts);
         }
 
         //
@@ -21,7 +23,8 @@ namespace SharpBlog.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var post = RavenSession.Load<Post>(id);
+            return View(post);
         }
 
         //
@@ -36,18 +39,14 @@ namespace SharpBlog.Controllers
         // POST: /Post/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Post post)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                RavenSession.Store(post);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
     }
 }
