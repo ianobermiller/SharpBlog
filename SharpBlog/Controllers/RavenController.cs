@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace SharpBlog.Controllers
 {
-    public class RavenController : Controller
+    public partial class RavenController : Controller
     {
         public static IDocumentStore DocumentStore { get; set; }
 
@@ -15,7 +15,7 @@ namespace SharpBlog.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            RavenSession = (IDocumentSession)HttpContext.Items["CurrentRequestRavenSession"];
+            RavenSession = (IDocumentSession)HttpContext.Items[Constants.RavenSessionKey];
         }
 
         protected HttpStatusCodeResult HttpNotModified()

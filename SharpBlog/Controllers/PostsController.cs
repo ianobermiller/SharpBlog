@@ -7,46 +7,34 @@ using SharpBlog.Models;
 
 namespace SharpBlog.Controllers
 {
-    public class PostController : RavenController
+    public partial class PostsController : RavenController
     {
-        //
-        // GET: /Post/
-
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             var posts = RavenSession.Query<Post>().ToList();
             return View(posts);
         }
 
-        //
-        // GET: /Post/Details/5
-
-        public ActionResult Details(int id)
+        public virtual ActionResult Get(string id)
         {
             var post = RavenSession.Load<Post>(id);
             return View(post);
         }
 
-        //
-        // GET: /Post/Create
-
-        public ActionResult Create()
+        public virtual ActionResult Add()
         {
             return View();
         }
 
-        //
-        // POST: /Post/Create
-
         [HttpPost]
-        public ActionResult Create(Post post)
+        public virtual ActionResult Add(Post post)
         {
             if (ModelState.IsValid)
             {
                 RavenSession.Store(post);
             }
 
-            return View();
+            return View(MVC.Post.Get(post.Id));
         }
     }
 }

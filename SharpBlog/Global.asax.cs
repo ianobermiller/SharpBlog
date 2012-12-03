@@ -21,12 +21,12 @@ namespace SharpBlog
         {
             BeginRequest += (sender, args) =>
             {
-                HttpContext.Current.Items["CurrentRequestRavenSession"] = RavenController.DocumentStore.OpenSession();
+                HttpContext.Current.Items[Constants.RavenSessionKey] = RavenController.DocumentStore.OpenSession();
             };
 
             EndRequest += (sender, args) =>
             {
-                using (var session = (Raven.Client.IDocumentSession)HttpContext.Current.Items["CurrentRequestRavenSession"])
+                using (var session = (Raven.Client.IDocumentSession)HttpContext.Current.Items[Constants.RavenSessionKey])
                 {
                     if (session == null)
                         return;
