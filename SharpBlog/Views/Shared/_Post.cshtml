@@ -1,0 +1,10 @@
+﻿@model SharpBlog.Models.Post
+
+@{
+    Layout = null;
+}
+
+<div class="post">
+    <h2 class="post__title">@Model.Title</h2>
+    <div class="post__body">@Html.FromMarkdown(Model.Body)</div>
+</div>
