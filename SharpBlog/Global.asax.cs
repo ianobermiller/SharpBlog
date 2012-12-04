@@ -6,9 +6,12 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AutoMapper;
 using Raven.Client;
 using Raven.Client.Document;
 using SharpBlog.Controllers;
+using SharpBlog.Models;
+using SharpBlog.ViewModels;
 
 namespace SharpBlog
 {
@@ -51,6 +54,13 @@ namespace SharpBlog
             InitializeDocumentStore();
 
             RavenController.DocumentStore = DocumentStore;
+
+            ConfigureMappings();
+        }
+
+        private void ConfigureMappings()
+        {
+            Mapper.CreateMap<PostAdd, Post>().ForMember(pa => pa.DocumentId, opt => opt.Ignore());
         }
 
         public static IDocumentStore DocumentStore { get; private set; }
@@ -63,6 +73,11 @@ namespace SharpBlog
             {
                 ConnectionStringName = "RavenDB"
             }.Initialize();
+
+            DocumentStore.Conventions.FindIdentityProperty = prop =>
+            {
+                return prop.Name == "DocumentId";
+            };
         }
     }
 }

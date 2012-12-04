@@ -86,6 +86,9 @@ namespace SharpBlog.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Get
         {
+            public readonly string year = "year";
+            public readonly string month = "month";
+            public readonly string day = "day";
             public readonly string id = "id";
         }
         static readonly ActionParamsClass_Add s_params_Add = new ActionParamsClass_Add();
@@ -94,7 +97,7 @@ namespace SharpBlog.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Add
         {
-            public readonly string post = "post";
+            public readonly string postAdd = "postAdd";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -106,8 +109,12 @@ namespace SharpBlog.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string Add = "Add";
+                public readonly string Get = "Get";
                 public readonly string Index = "Index";
             }
+            public readonly string Add = "~/Views/Posts/Add.cshtml";
+            public readonly string Get = "~/Views/Posts/Get.cshtml";
             public readonly string Index = "~/Views/Posts/Index.cshtml";
         }
     }
@@ -123,9 +130,12 @@ namespace SharpBlog.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Get(string id)
+        public override System.Web.Mvc.ActionResult Get(int year, int month, int day, int id)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Get);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "year", year);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "month", month);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "day", day);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             return callInfo;
         }
@@ -136,10 +146,10 @@ namespace SharpBlog.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Add(SharpBlog.Models.Post post)
+        public override System.Web.Mvc.ActionResult Add(SharpBlog.ViewModels.PostAdd postAdd)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Add);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "post", post);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "postAdd", postAdd);
             return callInfo;
         }
 

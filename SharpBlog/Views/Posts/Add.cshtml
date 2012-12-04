@@ -1,4 +1,4 @@
-﻿@model SharpBlog.Models.PostInput
+﻿@model SharpBlog.ViewModels.PostAdd
 
 @{
     ViewBag.Title = "Add";
@@ -21,19 +21,19 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.Slug)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Slug)
+            @Html.ValidationMessageFor(model => model.Slug)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Body)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Body)
             @Html.ValidationMessageFor(model => model.Body)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CreatedAt)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CreatedAt)
-            @Html.ValidationMessageFor(model => model.CreatedAt)
         </div>
 
         <p>

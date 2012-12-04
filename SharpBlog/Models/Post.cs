@@ -7,11 +7,11 @@ using System.Web.Mvc;
 
 namespace SharpBlog.Models
 {
-    public class Post
+    public class Post : RavenModel
     {
-        public string Id { get; set; }
         public DateTime CreatedAt { get; set; }
         public string Title { get; set; }
+        public string Slug { get; set; }
         public string Body { get; set; }
     }
 }

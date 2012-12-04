@@ -26,7 +26,6 @@ public static class MVC
 {
     public static SharpBlog.Controllers.PostsController Posts = new SharpBlog.Controllers.T4MVC_PostsController();
     public static SharpBlog.Controllers.RavenController Raven = new SharpBlog.Controllers.T4MVC_RavenController();
-    public static T4MVC.PostController Post = new T4MVC.PostController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

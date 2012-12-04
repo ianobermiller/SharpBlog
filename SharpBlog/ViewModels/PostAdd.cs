@@ -5,12 +5,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SharpBlog.Models
+namespace SharpBlog.ViewModels
 {
-    public class PostInput
+    public class PostAdd
     {
         [HiddenInput]
         public int Id { get; set; }
+
+        [Required]
+        [MaxLength(200)]
+        public string Slug { get; set; }
 
         [Required]
         public string Title { get; set; }
@@ -19,10 +23,6 @@ namespace SharpBlog.Models
         [Required]
         [DataType(DataType.MultilineText)]
         public string Body { get; set; }
-
-        [Display(Name = "Created At")]
-        [DataType(DataType.DateTime)]
-        public DateTimeOffset CreatedAt { get; set; }
 
         public bool IsNewPost()
         {

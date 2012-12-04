@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SharpBlog.Models.PostInput>
+﻿@model IEnumerable<SharpBlog.Models.Post>
 
 @{
     ViewBag.Title = "Index";
@@ -35,9 +35,7 @@
             @Html.DisplayFor(modelItem => item.CreatedAt)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("View", MVC.Posts.Get(item.CreatedAt.Year, item.CreatedAt.Month, item.CreatedAt.Day, item.Id))
         </td>
     </tr>
 }
