@@ -145,6 +145,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Extensions\HtmlExtensions.cs" />
+    <Compile Include="Extensions\LinkTo.cs" />
     <Compile Include="ViewModels\PostAdd.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\RavenController.cs" />

@@ -15,7 +15,7 @@ namespace SharpBlog
 
             routes.MapRoute(
                 name: "Post",
-                url: "{year}/{month}/{day}/{id}",
+                url: "{year}/{month}/{day}/{slug}",
                 defaults: new { controller = "posts", action = "get" }
             );
 

@@ -4,40 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Recent Posts</h2>
+
+<ul>
+@foreach (var post in Model) {
+    <li>@Html.PostLink(post)</li>
+}
+</ul>
 
 <p>
     @Html.ActionLink("Create New", MVC.Posts.Add())
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Body)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Body)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.ActionLink("View", MVC.Posts.Get(item.CreatedAt.Year, item.CreatedAt.Month, item.CreatedAt.Day, item.Id))
-        </td>
-    </tr>
-}
-
-</table>

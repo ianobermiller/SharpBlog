@@ -17,9 +17,9 @@ namespace SharpBlog.Controllers
             return View(posts);
         }
 
-        public virtual ActionResult Get(int year, int month, int day, int id)
+        public virtual ActionResult Get(int year, int month, int day, string slug)
         {
-            var post = RavenSession.Load<Post>(id);
+            var post = RavenSession.Query<Post>().Where(p => p.Slug.Equals(slug, StringComparison.InvariantCultureIgnoreCase)).SingleOrDefault();
             return View(post);
         }
 
@@ -37,7 +37,7 @@ namespace SharpBlog.Controllers
                 Mapper.Map(postAdd, post);
                 post.CreatedAt = DateTime.UtcNow;
                 RavenSession.Store(post);
-                return RedirectToAction(MVC.Posts.Get(post.CreatedAt.Year, post.CreatedAt.Month, post.CreatedAt.Day, post.Id));
+                return RedirectToAction(LinkTo.Post(post));
             }
 
             return View();

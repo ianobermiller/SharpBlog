@@ -89,7 +89,7 @@ namespace SharpBlog.Controllers
             public readonly string year = "year";
             public readonly string month = "month";
             public readonly string day = "day";
-            public readonly string id = "id";
+            public readonly string slug = "slug";
         }
         static readonly ActionParamsClass_Add s_params_Add = new ActionParamsClass_Add();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -130,13 +130,13 @@ namespace SharpBlog.Controllers
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Get(int year, int month, int day, int id)
+        public override System.Web.Mvc.ActionResult Get(int year, int month, int day, string slug)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Get);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "year", year);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "month", month);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "day", day);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "slug", slug);
             return callInfo;
         }
 
