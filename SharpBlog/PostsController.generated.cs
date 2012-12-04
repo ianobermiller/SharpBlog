@@ -50,6 +50,12 @@ namespace SharpBlog.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Get);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Comment()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Comment);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public PostsController Actions { get { return MVC.Posts; } }
@@ -69,6 +75,7 @@ namespace SharpBlog.Controllers
             public readonly string Index = "Index";
             public readonly string Get = "Get";
             public readonly string Add = "Add";
+            public readonly string Comment = "Comment";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -77,6 +84,7 @@ namespace SharpBlog.Controllers
             public const string Index = "Index";
             public const string Get = "Get";
             public const string Add = "Add";
+            public const string Comment = "Comment";
         }
 
 
@@ -98,6 +106,14 @@ namespace SharpBlog.Controllers
         public class ActionParamsClass_Add
         {
             public readonly string postAdd = "postAdd";
+        }
+        static readonly ActionParamsClass_Comment s_params_Comment = new ActionParamsClass_Comment();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Comment CommentParams { get { return s_params_Comment; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Comment
+        {
+            public readonly string commentAdd = "commentAdd";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -150,6 +166,13 @@ namespace SharpBlog.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Add);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "postAdd", postAdd);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Comment(SharpBlog.ViewModels.CommentAdd commentAdd)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Comment);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "commentAdd", commentAdd);
             return callInfo;
         }
 

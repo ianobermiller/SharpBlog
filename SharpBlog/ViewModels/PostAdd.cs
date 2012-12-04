@@ -15,7 +15,6 @@ namespace SharpBlog.ViewModels
         [Required]
         public string Title { get; set; }
 
-        [AllowHtml]
         [Required]
         [DataType(DataType.MultilineText)]
         public string Body { get; set; }

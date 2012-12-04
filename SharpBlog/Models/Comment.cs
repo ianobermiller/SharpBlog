@@ -7,12 +7,12 @@ using System.Web.Mvc;
 
 namespace SharpBlog.Models
 {
-    public class Post : RavenModel
+    public class Comment
     {
         public DateTime CreatedAt { get; set; }
-        public string Title { get; set; }
-        public string Slug { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Url { get; set; }
         public string Body { get; set; }
-        public List<Comment> Comments { get; set; }
     }
 }
