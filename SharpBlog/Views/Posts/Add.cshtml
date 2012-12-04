@@ -4,47 +4,43 @@
     ViewBag.Title = "Add";
 }
 
-<h2>Add</h2>
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm(MVC.Posts.Add(), FormMethod.Post, new { @class = "form-horizontal well" }))
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>PostInput</legend>
+        <legend>New post</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Slug)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Slug)
-            @Html.ValidationMessageFor(model => model.Slug)
+        <div class="control-group">
+            @Html.LabelFor(model => model.Title, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title, null, new { @class = "help-inline" })
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Body)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Body)
-            @Html.ValidationMessageFor(model => model.Body)
+        <div class="control-group">
+            @Html.LabelFor(model => model.Slug, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Slug)
+                @Html.ValidationMessageFor(model => model.Slug, null, new { @class = "help-inline" })
+            </div>
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="control-group">
+            @Html.LabelFor(model => model.Body, new { @class = "control-label" })
+            <div class="controls">
+                @Html.EditorFor(model => model.Body)
+                @Html.ValidationMessageFor(model => model.Body, null, new { @class = "help-inline" })
+            </div>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Create new post</button>
+            <button type="reset" class="btn">Cancel</button>
+        </div>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
